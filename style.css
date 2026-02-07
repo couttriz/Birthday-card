@@ -1,20 +1,19 @@
 :root {
     /* BẢNG MÀU NEON PARTY */
-    --bg-dark: #0f0c29;       /* Tím than đậm */
-    --neon-pink: #ff0055;     /* Hồng rực */
-    --neon-blue: #00f2ff;     /* Xanh Cyan */
-    --neon-purple: #bd00ff;   /* Tím điện tử */
+    --bg-dark: #0f0c29;
+    --neon-pink: #ff0055;
+    --neon-blue: #00f2ff;
+    --neon-purple: #bd00ff;
     --text-light: #ffffff;
     
     /* MÀU BÁNH KEM */
     --cake-base: #ff9a9e;     
     --cake-highlight: #fecfef;
-    --icing: #a18cd1;         /* Kem tím nhạt */
+    --icing: #a18cd1;
 }
 
 body {
     background-color: var(--bg-dark);
-    /* Hình nền lưới Cyber */
     background-image: 
         linear-gradient(rgba(15, 12, 41, 0.9), rgba(48, 43, 99, 0.9)),
         repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(0, 242, 255, 0.1) 20px),
@@ -27,7 +26,9 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    overflow-y: auto; 
+    /* Cho phép cuộn trên mobile nếu nội dung dài */
+    overflow-x: hidden; 
+    overflow-y: auto;
     padding: 20px;
     box-sizing: border-box;
 }
@@ -42,6 +43,8 @@ body {
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 0 40px rgba(189, 0, 255, 0.3);
+    width: 100%;
+    max-width: 600px; /* Giới hạn chiều rộng trên PC */
 }
 
 .instruction {
@@ -57,6 +60,7 @@ body {
     display: flex;
     gap: 15px;
     justify-content: center;
+    flex-wrap: wrap; /* Cho phép xuống dòng nếu quá nhiều chữ */
     margin-bottom: 40px;
 }
 
@@ -100,6 +104,9 @@ body {
     text-transform: uppercase;
     letter-spacing: 2px;
     box-shadow: 0 5px 20px rgba(255, 0, 85, 0.4);
+    /* Đảm bảo nút không bị tràn trên mobile nhỏ */
+    max-width: 100%; 
+    white-space: nowrap;
 }
 
 #unlock-btn:hover {
@@ -107,7 +114,6 @@ body {
     box-shadow: 0 0 30px var(--neon-pink);
 }
 
-/* Hiệu ứng rung khi sai mật mã */
 @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } }
 .shake { animation: shake 0.4s ease-in-out; border-color: red !important; }
 
@@ -116,6 +122,7 @@ body {
     display: none; 
     width: 100%;
     max-width: 900px;
+    padding-bottom: 50px; /* Thêm khoảng trống dưới cùng để lướt điện thoại */
 }
 
 .scene-content {
@@ -123,7 +130,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 50px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Quan trọng: Cho phép rớt dòng */
 }
 
 .letter-container {
@@ -133,7 +140,6 @@ body {
     text-align: left;
 }
 
-/* Giao diện thẻ bài hiện đại */
 .neon-card {
     background: rgba(20, 20, 40, 0.8);
     padding: 30px;
@@ -177,58 +183,81 @@ body {
     align-items: flex-end;
     padding-bottom: 20px;
     filter: drop-shadow(0 0 15px rgba(255, 154, 158, 0.4));
+    /* Giúp bánh không bị đè lên chữ trên mobile */
+    flex-shrink: 0; 
 }
 
 .cake { position: relative; width: 200px; height: 150px; }
-
-/* Các lớp bánh */
 .layer { position: absolute; width: 100%; border-radius: 15px; }
 .layer-bottom { bottom: 0; height: 50px; width: 200px; left: 0; background: var(--cake-base); }
 .layer-middle { bottom: 45px; height: 50px; width: 180px; left: 10px; background: #ffb7b2; z-index: 1;}
 .layer-top { bottom: 90px; height: 50px; width: 160px; left: 20px; background: var(--cake-highlight); z-index: 2;}
-
-/* Kem phủ */
 .icing { position: absolute; top: 0; left: 20px; width: 160px; height: 20px; background: var(--icing); border-radius: 15px 15px 0 0; z-index: 3;}
 .drip { position: absolute; background: var(--icing); width: 15px; border-radius: 0 0 10px 10px; top: 10px; }
 .drip1 { left: 15px; height: 35px; }
 .drip2 { left: 60px; height: 25px; }
 .drip3 { right: 20px; height: 40px; }
+.candle { position: absolute; width: 12px; height: 45px; background: repeating-linear-gradient(45deg, #fff, #fff 5px, var(--neon-blue) 5px, var(--neon-blue) 10px); bottom: 135px; left: 95px; z-index: 4; border-radius: 3px; box-shadow: 0 0 5px var(--neon-blue);}
+.candle-2 { left: 125px; bottom: 130px; background: repeating-linear-gradient(-45deg, #fff, #fff 5px, var(--neon-pink) 5px, var(--neon-pink) 10px); box-shadow: 0 0 5px var(--neon-pink);}
+.flame { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); width: 14px; height: 20px; background: #ffcc00; border-radius: 50% 50% 20% 20%; box-shadow: 0 0 15px #ffcc00, 0 0 30px #ff0055; animation: flicker 0.6s infinite alternate;}
 
-/* Nến */
-.candle { 
-    position: absolute; width: 12px; height: 45px; 
-    background: repeating-linear-gradient(45deg, #fff, #fff 5px, var(--neon-blue) 5px, var(--neon-blue) 10px); 
-    bottom: 135px; left: 95px; z-index: 4; border-radius: 3px;
-    box-shadow: 0 0 5px var(--neon-blue);
-}
-.candle-2 { 
-    left: 125px; bottom: 130px; 
-    background: repeating-linear-gradient(-45deg, #fff, #fff 5px, var(--neon-pink) 5px, var(--neon-pink) 10px); 
-    box-shadow: 0 0 5px var(--neon-pink);
-}
-
-/* Ngọn lửa */
-.flame {
-    position: absolute; top: -18px; left: 50%; transform: translateX(-50%);
-    width: 14px; height: 20px; background: #ffcc00;
-    border-radius: 50% 50% 20% 20%;
-    box-shadow: 0 0 15px #ffcc00, 0 0 30px #ff0055;
-    animation: flicker 0.6s infinite alternate;
-}
-
-/* Hiệu ứng hiện hình khi mở khóa */
 .fade-in-scene { display: block !important; animation: zoomIn 1s ease forwards; }
-@keyframes zoomIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
-}
+@keyframes zoomIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+@keyframes flicker { 0% { transform: translateX(-50%) scale(1); opacity: 1; } 100% { transform: translateX(-50%) scale(0.9); opacity: 0.8; } }
 
-@keyframes flicker {
-    0% { transform: translateX(-50%) scale(1); opacity: 1; }
-    100% { transform: translateX(-50%) scale(0.9); opacity: 0.8; }
-}
+/* ========================================= */
+/* --- PHẦN RESPONSIVE CHO ĐIỆN THOẠI --- */
+/* ========================================= */
 
-@media (max-width: 768px) {
-    .scene-content { flex-direction: column-reverse; gap: 30px; }
-    .cake-container { transform: scale(0.85); }
+@media screen and (max-width: 768px) {
+    /* 1. Điều chỉnh màn hình khóa */
+    #vault-container {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .cryptex {
+        gap: 8px; /* Giảm khoảng cách giữa các ô */
+    }
+
+    .dial {
+        width: 55px; /* Thu nhỏ ô chữ */
+        height: 75px;
+        font-size: 1.8em; /* Giảm cỡ chữ */
+    }
+
+    .instruction {
+        font-size: 1.2rem;
+    }
+
+    #unlock-btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+
+    /* 2. Điều chỉnh màn hình lời chúc */
+    .scene-content {
+        flex-direction: column; /* Xếp dọc: Bánh trên, Thư dưới */
+        gap: 10px;
+    }
+
+    .cake-container {
+        /* Thu nhỏ bánh kem một chút để vừa màn hình */
+        transform: scale(0.8); 
+        margin-bottom: -30px; /* Kéo thư lên gần bánh hơn */
+    }
+
+    .letter-container {
+        width: 100%; /* Thư chiếm full màn hình */
+        min-width: auto;
+        padding: 20px;
+    }
+
+    .neon-title {
+        font-size: 2rem; /* Tiêu đề nhỏ lại */
+    }
+
+    #typewriter-text {
+        font-size: 1rem; /* Chữ nội dung dễ đọc hơn */
+    }
 }
