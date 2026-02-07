@@ -1,5 +1,5 @@
 // --- CẤU HÌNH ---
-const targetCode = "LUAN"; // <--- THAY MẬT MÃ CỦA BẠN TẠI ĐÂY (Viết hoa)
+const targetCode = "DONG"; // <--- THAY MẬT MÃ CỦA BẠN TẠI ĐÂY (Viết hoa)
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 // --- NỘI DUNG LỜI CHÚC (Sửa nội dung trong dấu ` `) ---
