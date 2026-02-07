@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMSN bà Quỳnh</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="vault-container">
+        <div class="header-neon">
+            <p class="instruction">NHẬP PASS ĐỂ MỞ QUÀ</p>
+        </div>
+        
+        <div class="cryptex" id="cryptex">
+            <div class="dial" onclick="rotate(this)">A</div>
+            <div class="dial" onclick="rotate(this)">A</div>
+            <div class="dial" onclick="rotate(this)">A</div>
+            <div class="dial" onclick="rotate(this)">A</div>
+        </div>
+
+        <button id="unlock-btn" onclick="checkCode()">UNLOCK NOW</button>
+    </div>
+
+    <div id="secret-scene" class="hidden">
+        <div class="scene-content">
+            
+            <div class="letter-container neon-card">
+                <h1 class="neon-title">Happy Birthday!</h1>
+                <div id="typewriter-text"></div>
+                <span class="cursor">_</span>
+            </div>
+
+            <div class="cake-container">
+                <div class="cake">
+                    <div class="plate"></div>
+                    <div class="layer layer-bottom"></div>
+                    <div class="layer layer-middle"></div>
+                    <div class="layer layer-top"></div>
+                    <div class="icing">
+                        <div class="drip drip1"></div>
+                        <div class="drip drip2"></div>
+                        <div class="drip drip3"></div>
+                    </div>
+                    <div class="candle">
+                        <div class="flame"></div>
+                    </div>
+                     <div class="candle candle-2">
+                        <div class="flame"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
