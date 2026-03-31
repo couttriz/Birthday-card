@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/this-page-does-not-exist"
+    }
+  ]
+}
